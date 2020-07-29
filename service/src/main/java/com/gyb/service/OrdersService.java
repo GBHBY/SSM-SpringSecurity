@@ -17,8 +17,9 @@ public interface OrdersService {
      * create by: gb
      * description: 查询订单
      * create time: 2020/7/28 21:22
-     *
+     * @param page 查询第几页
+     * @param size 多少条
      * @return
      */
-    List<Orders> findAll();
+    List<Orders> findAll(int page,int size);
 }

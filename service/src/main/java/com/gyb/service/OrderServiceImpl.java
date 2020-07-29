@@ -1,5 +1,6 @@
 package com.gyb.service;
 
+import com.github.pagehelper.PageHelper;
 import com.gyb.dao.OrdersDao;
 import com.gyb.ssm.domain.Orders;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +24,9 @@ public class OrderServiceImpl implements OrdersService {
     private OrdersDao ordersDao;
 
     @Override
-    public List<Orders> findAll() {
+    public List<Orders> findAll(int page,int size) {
+//        pageNum是页码值，pageSize是每页的条数，要写在查询之前
+        PageHelper.startPage(page,size);
         return ordersDao.findAll();
     }
 }
