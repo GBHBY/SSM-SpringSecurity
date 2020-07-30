@@ -22,7 +22,7 @@ public class Orders {
      * description: 主键
      * create time: 2020/7/28 21:09
      */
-    private String id;
+    private int id;
     /**
      * create by: gb
      * description: 订单编号
@@ -97,11 +97,11 @@ public class Orders {
         this.orderStatusStr = orderStatusStr;
     }
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 

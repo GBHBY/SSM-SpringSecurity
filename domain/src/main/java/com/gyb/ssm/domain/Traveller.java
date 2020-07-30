@@ -13,9 +13,18 @@ public class Traveller {
     private String name;
     private String sex;
     private String phoneNum;
+    /**
+     * 0身份证 1护照 2军官证
+     */
     private Integer credentialsType;
+    /**
+     * 类型转换
+     */
     private String credentialsTypeStr;
     private String credentialsNum;
+    /**
+     * 旅客类型 0承认 1儿童
+     */
     private Integer travellerType;
     private String travellerTypeStr;
 
@@ -52,6 +61,7 @@ public class Traveller {
     }
 
     public Integer getCredentialsType() {
+
         return credentialsType;
     }
 
@@ -60,6 +70,14 @@ public class Traveller {
     }
 
     public String getCredentialsTypeStr() {
+        if (credentialsType == 0) {
+            credentialsTypeStr = "身份证";
+        } else if (credentialsType == 1) {
+            credentialsTypeStr = "护照";
+        } else {
+            credentialsTypeStr = "军官证";
+        }
+
         return credentialsTypeStr;
     }
 
@@ -84,6 +102,12 @@ public class Traveller {
     }
 
     public String getTravellerTypeStr() {
+        if (travellerType == 0) {
+            travellerTypeStr = "成人";
+        } else {
+            travellerTypeStr = "儿童";
+        }
+
         return travellerTypeStr;
     }
 

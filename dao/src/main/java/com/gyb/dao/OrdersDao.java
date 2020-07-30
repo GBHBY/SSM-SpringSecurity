@@ -1,11 +1,9 @@
 package com.gyb.dao;
 
+import com.gyb.ssm.domain.Member;
 import com.gyb.ssm.domain.Orders;
 import com.gyb.ssm.domain.Product;
-import org.apache.ibatis.annotations.One;
-import org.apache.ibatis.annotations.Result;
-import org.apache.ibatis.annotations.Results;
-import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.*;
 import org.springframework.core.annotation.Order;
 
 import java.util.List;
@@ -27,6 +25,27 @@ public interface OrdersDao {
      */
     @Select("select * from orders")
     @Results({
+//            @Result(id = true, property = "id", column = "id"),
+//            @Result(property = "orderNum", column = "orderNum"),
+//            @Result(property = "orderTime", column = "orderTime"),
+//            @Result(property = "peopleCount", column = "peopleCount"),
+//            @Result(property = "orderDesc", column = "orderDesc"),
+//            @Result(property = "payType", column = "payType"),
+//            @Result(property = "orderStatus", column = "orderStatus"),
+            @Result(property = "product", column = "productId", javaType = Product.class, one = @One(select = "com.gyb.dao.ProductDao.findById"))
+    })
+    List<Orders> findAll();
+
+    /**
+     * create by: gb
+     * description: 设计多表操作
+     * create time: 2020/7/29 21:33
+     *
+     * @param orderId
+     * @return
+     */
+    @Select("select * from orders where id =#{orderId}")
+    @Results({
             @Result(id = true, property = "id", column = "id"),
             @Result(property = "orderNum", column = "orderNum"),
             @Result(property = "orderTime", column = "orderTime"),
@@ -34,6 +53,9 @@ public interface OrdersDao {
             @Result(property = "orderDesc", column = "orderDesc"),
             @Result(property = "payType", column = "payType"),
             @Result(property = "orderStatus", column = "orderStatus"),
-            @Result(property = "product", column = "productId", javaType = Product.class, one = @One(select = "com.gyb.dao.ProductDao.findById"))})
-    List<Orders> findAll();
+            @Result(property = "product", column = "productId", javaType = Product.class, one = @One(select = "com.gyb.dao.ProductDao.findById")),
+            @Result(property = "member",column = "memberId",javaType = Member.class,one = @One(select = "com.gyb.dao.MemberDao.findById")),
+            @Result(property = "travellerList",column = "id",javaType = java.util.List.class,many = @Many(select="com.gyb.dao.TravellerDao.findByOrdersId"))
+    })
+    Orders findById(String orderId);
 }

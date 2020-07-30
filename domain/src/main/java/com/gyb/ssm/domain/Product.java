@@ -18,21 +18,17 @@ public class Product {
     }
 
     /**
-     * create by: gb
-     * description: 主键
-     * create time: 2020/7/27 9:40
+     * 主键
      */
     private String id;
     /**
-     * create by: gb
-     * description: 产品名称
-     * create time: 2020/7/27 9:40
+     * 产品名称
      */
     private String productName;
+
+
     /**
-     * create by: gb
-     * description: 编号
-     * create time: 2020/7/27 9:40
+     * 编号
      */
     private String productNum;
     /**
@@ -122,7 +118,7 @@ public class Product {
 
     public String getDepartureTimeStr() {
         if (departureTime != null) {
-            departureTimeStr = DateUtils.dateToString(departureTime,"yyyy-MM-dd HH:mm:ss");
+            departureTimeStr = DateUtils.dateToString(departureTime, "yyyy-MM-dd HH:mm:ss");
 
 
         }

@@ -1,12 +1,16 @@
 package com.gyb.controller;
 
+import com.gyb.DateStringEditor;
 import com.gyb.service.ProductService;
 import com.gyb.ssm.domain.Product;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -21,6 +25,21 @@ public class ProductController {
 
     @Autowired
     private ProductService productService;
+
+    /**
+     * create by: gb
+     * description: TODO
+     * create time: 2020/7/29 17:15
+     * @param webDataBinder
+     * @return
+     */
+    @InitBinder
+    public void initBinder(WebDataBinder webDataBinder){
+        webDataBinder.registerCustomEditor(Date.class,new DateStringEditor());
+
+    }
+
+
 
     /**
      * create by: gb

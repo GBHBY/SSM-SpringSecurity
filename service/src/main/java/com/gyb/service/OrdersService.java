@@ -22,4 +22,13 @@ public interface OrdersService {
      * @return
      */
     List<Orders> findAll(int page,int size);
+
+    /**
+     * create by: gb
+     * description: 通过id查询订单
+     * create time: 2020/7/29 21:32
+     * @param orderId
+     * @return
+     */
+    Orders findById(String orderId);
 }

@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
@@ -65,6 +66,23 @@ public class OrdersController {
 
         return modelAndView;
 
+    }
+
+    /**
+     * create by: gb
+     * description: TODO
+     * create time: 2020/7/29 21:29
+     *
+     * @param orderId
+     * @return
+     */
+    @RequestMapping("findById.do")
+    public ModelAndView findById(@RequestParam(name = "id", required = true) String orderId) {
+        ModelAndView modelAndView = new ModelAndView();
+        Orders orders = ordersService.findById(orderId);
+        modelAndView.addObject("orders", orders);
+        modelAndView.setViewName("orders-show");
+        return modelAndView;
     }
 
 
