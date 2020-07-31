@@ -1,4 +1,7 @@
+com\gyb\ssm\domain\Permission.class
+com\gyb\ssm\domain\UserInfo.class
 com\gyb\ssm\domain\Traveller.class
 com\gyb\ssm\domain\Orders.class
 com\gyb\ssm\domain\Product.class
 com\gyb\ssm\domain\Member.class
+com\gyb\ssm\domain\Role.class

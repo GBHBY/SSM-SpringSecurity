@@ -1,4 +1,6 @@
+com\gyb\dao\UserDao.class
 com\gyb\dao\ProductDao.class
 com\gyb\dao\OrdersDao.class
 com\gyb\dao\MemberDao.class
+com\gyb\dao\RoleDao.class
 com\gyb\dao\TravellerDao.class
