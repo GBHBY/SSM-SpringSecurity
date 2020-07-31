@@ -1,10 +1,7 @@
 package com.gyb.dao;
 
 import com.gyb.ssm.domain.UserInfo;
-import org.apache.ibatis.annotations.Many;
-import org.apache.ibatis.annotations.Result;
-import org.apache.ibatis.annotations.Results;
-import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.*;
 
 import java.util.List;
 
@@ -48,4 +45,15 @@ public interface UserDao {
      */
     @Select("select * from users")
     List<UserInfo> findAll();
+
+    /**
+     * create by: gb
+     * description: TODO
+     * create time: 2020/7/31 16:39
+     *
+     * @param userInfo
+     * @return
+     */
+    @Insert("insert into users(email,username,password,phoneNum,status) values(#{email},#{userName},#{password},#{phoneNum},#{status})")
+    void addUser(UserInfo userInfo);
 }

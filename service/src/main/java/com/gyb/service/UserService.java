@@ -25,4 +25,5 @@ public interface UserService extends UserDetailsService {
      */
     List<UserInfo> findAll();
 
+    void addUser(UserInfo userInfo);
 }
