@@ -48,9 +48,13 @@ public class UserServiceImpl implements UserService {
     public List<SimpleGrantedAuthority> getAuthority(List<Role> roles) {
         List<SimpleGrantedAuthority> list = new ArrayList<>();
         for (Role role : roles) {
-            list.add(new SimpleGrantedAuthority("ROLE" + role.getRoleName()));
+            list.add(new SimpleGrantedAuthority("ROLE_" + role.getRoleName()));
         }
         return list;
     }
 
+    @Override
+    public List<UserInfo> findAll() {
+        return userDao.findAll();
+    }
 }

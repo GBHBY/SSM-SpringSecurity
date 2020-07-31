@@ -32,11 +32,20 @@ public interface UserDao {
             @Result(property = "password", column = "password"),
             @Result(property = "phoneNum", column = "phoneNum"),
             @Result(property = "status", column = "status"),
-            @Result(property = "roles", column = "id",javaType = java.util.List.class,many = @Many(select = "com.gyb.dao.RoleDao.findRoleByUserId")),
-
+            @Result(property = "roles", column = "id", javaType = java.util.List.class, many = @Many(select = "com.gyb.dao.RoleDao.findRoleByUserId")),
 
 
     })
     UserInfo findByUserName(String userName);
 
+    /**
+     * create by: gb
+     * description: TODO
+     * create time: 2020/7/31 13:22
+     *
+     * @param
+     * @return
+     */
+    @Select("select * from users")
+    List<UserInfo> findAll();
 }
