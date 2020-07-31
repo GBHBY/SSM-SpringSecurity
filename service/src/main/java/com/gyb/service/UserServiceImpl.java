@@ -44,7 +44,7 @@ public class UserServiceImpl implements UserService {
     public UserDetails loadUserByUsername(String userName) throws UsernameNotFoundException {
         UserInfo userInfo = userDao.findByUserName(userName);
         /** 处理自己的用户成为UserDetails */
-        User user = new User(userInfo.getUserName(), "{noop}" + userInfo.getPassword(), userInfo.getStatus() == 0 ? false : true, true, true, true, getAuthority(userInfo.getRoles()));
+        User user = new User(userInfo.getUserName(), userInfo.getPassword(), userInfo.getStatus() == 0 ? false : true, true, true, true, getAuthority(userInfo.getRoles()));
 
         return user;
     }
