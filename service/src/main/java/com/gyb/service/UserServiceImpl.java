@@ -68,4 +68,17 @@ public class UserServiceImpl implements UserService {
         userInfo.setPassword(passwordEncoder.encode(userInfo.getPassword()));
         userDao.addUser(userInfo);
     }
+
+    /**
+     * create by: gb
+     * description: TODO
+     * create time: 2020/8/1 12:30
+     *
+     * @param id
+     * @return
+     */
+    @Override
+    public UserInfo findById(String id) {
+        return userDao.findById(id);
+    }
 }

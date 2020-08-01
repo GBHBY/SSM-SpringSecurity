@@ -57,5 +57,23 @@ public class UserController {
         return "redirect:findAll.do";
     }
 
+/**
+     * create by: gb
+     * description: 用户详情
+     * create time: 2020/8/1 10:42
+     * @param id
+     * @return
+     */
+
+    @RequestMapping("findById.do")
+    public ModelAndView findById(String id ){
+        ModelAndView modelAndView = new ModelAndView();
+        UserInfo userInfo = userService.findById(id);
+        modelAndView.addObject("user",userInfo);
+        modelAndView.setViewName("user-show1");
+        return modelAndView;
+    }
+
+
 
 }

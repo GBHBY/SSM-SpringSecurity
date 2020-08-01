@@ -25,5 +25,24 @@ public interface UserService extends UserDetailsService {
      */
     List<UserInfo> findAll();
 
+    /**
+     * create by: gb
+     * description: TODO
+     * create time: 2020/8/1 10:44
+     *
+     * @param userInfo
+     * @return
+     */
     void addUser(UserInfo userInfo);
+
+
+    /**
+     * create by: gb
+     * description: 添加用户
+     * create time: 2020/8/1 10:44
+     *
+     * @param id
+     * @return
+     */
+    UserInfo findById(String id);
 }

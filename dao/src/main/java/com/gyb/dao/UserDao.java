@@ -56,4 +56,25 @@ public interface UserDao {
      */
     @Insert("insert into users(email,username,password,phoneNum,status) values(#{email},#{userName},#{password},#{phoneNum},#{status})")
     void addUser(UserInfo userInfo);
+
+
+    /**
+     * create by: gb
+     * description: TODO
+     * create time: 2020/8/1 10:43
+     *
+     * @param id
+     * @return
+     */
+    @Select("select * from users where id = #{id}")
+    @Results({
+            @Result(id = true, property = "id", column = "id"),
+            @Result(property = "userName", column = "username"),
+            @Result(property = "email", column = "email"),
+            @Result(property = "password", column = "password"),
+            @Result(property = "phoneNum", column = "phoneNum"),
+            @Result(property = "status", column = "status"),
+            @Result(property = "roles", column = "id", javaType = java.util.List.class, many = @Many(select = "com.gyb.dao.RoleDao.findRoleByUserId")),
+    })
+    UserInfo findById(String id);
 }
