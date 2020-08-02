@@ -1,5 +1,6 @@
 package com.gyb.service;
 
+import com.gyb.ssm.domain.Role;
 import com.gyb.ssm.domain.UserInfo;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -45,4 +46,25 @@ public interface UserService extends UserDetailsService {
      * @return
      */
     UserInfo findById(String id);
+
+    /**
+     * create by: gb
+     * description: 查询可以添加的角色
+     * create time: 2020/8/2 13:39
+     *
+     * @param id
+     * @return
+     */
+    List<Role> findOtherRoleByUserId(String id);
+
+    /**
+     * create by: gb
+     * description: 添加用户角色到user_role表
+     * create time: 2020/8/2 14:50
+     *
+     * @param roleId
+     * @param userId
+     * @return
+     */
+    void addRoleToUser(String userId, String roleId);
 }

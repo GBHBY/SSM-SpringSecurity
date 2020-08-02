@@ -1,4 +1,5 @@
 com\gyb\controller\UserController.class
+com\gyb\controller\PermissionController.class
 com\gyb\controller\RoleController.class
 com\gyb\controller\OrdersController.class
 com\gyb\controller\ProductController.class

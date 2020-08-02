@@ -1,5 +1,6 @@
 package com.gyb.dao;
 
+import com.gyb.ssm.domain.Role;
 import com.gyb.ssm.domain.UserInfo;
 import org.apache.ibatis.annotations.*;
 
@@ -77,4 +78,27 @@ public interface UserDao {
             @Result(property = "roles", column = "id", javaType = java.util.List.class, many = @Many(select = "com.gyb.dao.RoleDao.findRoleByUserId")),
     })
     UserInfo findById(String id);
+
+    /**
+     * create by: gb
+     * description: TODO
+     * create time: 2020/8/2 13:40
+     *
+     * @param id
+     * @return
+     */
+    @Select("select * from role where id not in (select roleId from users_role where userId=#{id})")
+    List<Role> findOtherRoleByUserId(String id);
+
+    /**
+     * create by: gb
+     * description: TODO
+     * create time: 2020/8/2 14:51
+     *
+     * @param roleId
+     * @param userId
+     * @return
+     */
+    @Insert("insert into users_role(userId,roleId) values(#{userId},#{roleId})")
+    void addRoleToUser(@Param("userId") String userId, @Param("roleId") String roleId);
 }
